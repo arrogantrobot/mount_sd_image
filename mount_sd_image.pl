@@ -14,15 +14,15 @@ my $mount_cmd = "sudo mount -o loop,offset=$offset $filename $mount_point";
 
 print $mount_cmd. "\n";
 
-if($go) {
+if($< == 0) {
     eval {
         system($mount_cmd);
     };
     if ($@) { 
         die "failed call to mount the loop device:  $mount_cmd";
     }
+    print "image mounted at: $mount_point\n";
 }
-print "Done!\n";
 exit(0);
 
 
